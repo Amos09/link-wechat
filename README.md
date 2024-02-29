@@ -64,9 +64,9 @@ LinkWeChat 基于企业微信开放能力，不仅集成了企微强大的后台
 
 ## 1.2 能力
 
-LinkWeChat SCRM 基于企业私域流量营销闭环，遵从获取新客到管理并维护客户，再到建立社群进行客户营销，最后在营销过程中再次获取新客的循环流程。
+LinkWeChat SCRM V5.x 基于私域营销全链路的业务闭环，实现前链路全域规模化获客、中链路智能精细化运营以及后链路自动化精准营销，并在此基础上全面融入AI+RPA能力（规划中），助力企业私域数智化增长。
 
-![输入图片说明](readme-pic/yewujiagou.png)
+![输入图片说明](readme-pic/new-kuangjiaimage.png)
 
 整个系统共分为十大模块：
 
@@ -123,9 +123,9 @@ _（注意：演示环境已屏蔽管理权限和相关操作）_
 
 ## 2.2 系统架构
 
-LinkWeChat 自 V3.0 起架构升级，全面升级为微服务架构，整体系统架构如下：
+LinkWeChat SCRM 整体采用前后端分离的分布式微服务架构，灵活高效，具备高拓展性：
 
-![系统架构](readme-pic/jiagou.png)
+![输入图片说明](readme-pic/jishujiagouimage.png)
 
 ## 2.3 技术栈
 
