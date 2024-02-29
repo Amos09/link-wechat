@@ -64,6 +64,8 @@ LinkWeChat 在集成企微强大开放能力基础上，进一步拓展灵活高
 
 [更多 LinkWeChat 的故事](https://www.yuque.com/linkwechat/help/dsatfs)
 
+![输入图片说明](readme-pic/data2024image.png)
+
 ## 1.2 能力
 
 LinkWeChat SCRM V5.x 基于私域营销全链路的业务闭环，实现前链路全域规模化获客、中链路智能精细化运营以及后链路自动化精准营销，并在此基础上全面融入AI+RPA能力（规划中），助力企业私域数智化增长。
