@@ -231,10 +231,6 @@ LinkWeChat 凭借着出色的产品能力和专业的技术能力，已经在各
 
 ![输入图片说明](readme-pic/contact1.png)
 
-如果你有任何 LinkWeChat 产品上的想法、意见或建议，或商务上的合作需求，请扫码添加 LinkWeChat 项目团队进一步沟通：
-
-![输入图片说明](readme-pic/contact2.png)
-
 # 七、捐赠支持
 
 ## 7.1 来一杯卡布奇洛
