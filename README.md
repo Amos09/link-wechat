@@ -213,12 +213,6 @@ LinkWeChat 凭借着出色的产品能力和专业的技术能力，已经在各
 
 ![输入图片说明](readme-pic/rongyuimage.png)
 
-# 六、联系我们
-
-如果你想加入我们的开源交流群，请扫码添加 LinkWeChat 项目作者，加入群聊：
-
-![输入图片说明](readme-pic/contact1.png)
-
 ---
 
 **<p align="center">如果您觉得我们的开源项目很有帮助，请点击 :star: Star 支持 LinkWeChat 开源团队:heart:</p>**
