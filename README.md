@@ -97,27 +97,21 @@ LinkWeChat 不做私域营销专家，而是通过开源让每个企业都是自
 
 # 二、关于项目
 
-## 2.1 在线体验
 
-开源演示地址：[http://demo.linkwechat.net/](http://demo.linkwechat.net/)
-
-默认账号密码：lw，123456
-
-
-## 2.2 系统架构
+## 2.1 系统架构
 
 LinkWeChat SCRM 整体采用前后端分离的分布式微服务架构，灵活高效，具备高拓展性：
 
 ![输入图片说明](readme-pic/jishujiagouimage.png)
 
-## 2.3 技术栈
+## 2.2 技术栈
 
 本项目基于 [RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud) 后台开发框架，感谢 [RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud) 的开源。
 
 * 前端技术栈：ES6、Vue、Vuex、Vue-router、Vue-cli、Axios、Element-ui；
 * 后端技术栈：Spring Boot、Spring Cloud & Alibaba、Nacos、Mybatis-plus、xxljob、RabbitMQ、Forest；
 
-## 2.4 项目结构
+## 2.3 项目结构
 
 **后端结构**
 
@@ -143,7 +137,7 @@ LinkWeChat SCRM 整体采用前后端分离的分布式微服务架构，灵活�
 ├── linkwe-uniapp		// uniapp短链小程序项目
 ```
 
-## 2.5 项目部署
+## 2.4 项目部署
 
 点击下方链接进入官方语雀帮助手册查看项目部署方式：
 
