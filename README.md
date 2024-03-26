@@ -11,7 +11,7 @@
 [![license](http://img.shields.io/badge/license-GPL%203.0-orange)](https://gitee.com/LinkWeChat/link-wechat/blob/master/LICENSE)
 [![木兰社区](https://img.shields.io/badge/Mulan-incubating-blue)](https://portal.mulanos.cn//)
 
-[项目手册](https://www.yuque.com/linkwechat/help) | [用户手册](https://docs.qq.com/pdf/DZUpLbEVZR3RLdmxO?) | [常见问题](https://www.yuque.com/linkwechat/help/qk5gl6) | [V5.x功能清单](https://docs.qq.com/sheet/DZWNxelVoT2VSU1V6?tab=BB08J3)  
+[项目手册](https://www.yuque.com/linkwechat/help) | [用户手册](https://docs.qq.com/pdf/DZUpLbEVZR3RLdmxO?) | [常见问题](https://www.yuque.com/linkwechat/help/qk5gl6) 
 
 
 </div>
@@ -70,10 +70,6 @@ LinkWeChat SCRM V5.x 基于私域营销全链路的业务闭环，实现前链�
 *   **全能营销** ：提供多类型、多场景客户营销工具；
 *   **企业风控** ：会话合规存档，敏感内容全局风控；
 *   **管理中心** ：组织架构、自建应用全融合，实现“一个后台”；
-
-[LinkWeChat 社区版 V5.x 详细功能清单](https://docs.qq.com/sheet/DZWNxelVoT2VSU1V6?tab=BB08J3)
-
-我们欢迎感兴趣的贡献者积极参与 LinkWeChat 新版的开源中，如有兴趣通过下方的联系方式联系我们哦~
 
 ## 1.3 优势
 
@@ -187,10 +183,6 @@ LinkWeChat SCRM 整体采用前后端分离的分布式微服务架构，灵活�
 - [x] 优化会话存档&敏感词相关功能；
 - [x] 修复了一些已知问题；
 - [x] 其余各模块UI细节调优。
-
-点击下方链接进入官方语雀帮助手册查看历史版本更新日志：
-
-[帮助手册——历史更新](https://www.yuque.com/linkwechat/help/pcmd0o)
 
 # 五、奖项荣誉
 
