@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.List;
@@ -34,7 +35,7 @@ import java.util.concurrent.Executor;
  */
 @Service
 @Slf4j
-public class GatewayDynamicRouteService implements ApplicationEventPublisherAware{
+public class GatewayDynamicRouteService implements ApplicationEventPublisherAware {
 
     @Resource
     private RedisRouteDefinitionRepository redisRouteDefinitionRepository;
@@ -52,10 +53,14 @@ public class GatewayDynamicRouteService implements ApplicationEventPublisherAwar
     private String dataId;
     @Value("${nacos.gateway.route.config.group:DEFAULT_GROUP}")
     private String routeGroup;
-    @Value("${spring.cloud.nacos.discovery.server-addr}")
+    @Value("${spring.cloud.nacos.config.server-addr}")
     private String serverAddress;
-    @Value("${spring.cloud.nacos.discovery.namespace:}")
+    @Value("${spring.cloud.nacos.config.namespace:}")
     private String namespace;
+    @Value("${spring.cloud.nacos.config.username:}")
+    private String username;
+    @Value("${spring.cloud.nacos.config.password:}")
+    private String password;
 
 
     @Override
@@ -66,7 +71,7 @@ public class GatewayDynamicRouteService implements ApplicationEventPublisherAwar
     @PostConstruct
     public void init() {
         log.info("gateway route init...");
-        //先清空缓存中旧的路由
+        // 先清空缓存中旧的路由
         redisService.deleteObject(CacheConstants.GATEWAY_ROUTES);
         try {
             configService = initConfigService();
@@ -98,6 +103,12 @@ public class GatewayDynamicRouteService implements ApplicationEventPublisherAwar
             properties.setProperty("serverAddr", serverAddress);
             if (StringUtils.isNotBlank(namespace)) {
                 properties.setProperty("namespace", namespace);
+            }
+            if (StringUtils.isNotBlank(username)) {
+                properties.setProperty("username", username);
+            }
+            if (StringUtils.isNotBlank(password)) {
+                properties.setProperty("password", password);
             }
             return configService = NacosFactory.createConfigService(properties);
         } catch (Exception e) {
@@ -154,7 +165,6 @@ public class GatewayDynamicRouteService implements ApplicationEventPublisherAwar
                 .then(Mono.defer(() -> Mono.just(ResponseEntity.ok().build())))
                 .onErrorResume(t -> t instanceof NotFoundException, t -> Mono.just(ResponseEntity.notFound().build()));
     }
-
 
 
 }

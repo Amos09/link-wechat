@@ -10,6 +10,8 @@
     <name>linkwechat-cloud</name>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <spring-cloud-gateway.version>3.0.7</spring-cloud-gateway.version>
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
@@ -53,7 +55,6 @@
         <starter-bootstrap.version>3.0.4</starter-bootstrap.version>
         <swagger-annotations.version>1.5.21</swagger-annotations.version>
         <swagger-models.version>1.5.21</swagger-models.version>
-        <p6spy.version>3.9.1</p6spy.version>
         <cglib-nodep.version>3.2.4</cglib-nodep.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <xstream.version>1.4.20</xstream.version>
@@ -155,13 +156,6 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.boot.version}</version>
-            </dependency>
-
-            <!-- 获取系统信息 -->
-            <dependency>
-                <groupId>com.github.oshi</groupId>
-                <artifactId>oshi-core</artifactId>
-                <version>${oshi.version}</version>
             </dependency>
 
             <!-- swagger2-->
@@ -380,13 +374,6 @@
                 <version>${transmittable-thread-local.version}</version>
             </dependency>
 
-            <!-- 数据库版本管理 -->
-            <dependency>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-core</artifactId>
-                <version>${liquibase.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-amqp</artifactId>
@@ -415,13 +402,6 @@
                 <artifactId>ffmpeg-platform</artifactId>
                 <version>${ffmpeg-platform.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>p6spy</groupId>
-                <artifactId>p6spy</artifactId>
-                <version>${p6spy.version}</version>
-            </dependency>
-
 
             <!--动态添加属性和方法开始-->
             <dependency>
@@ -488,15 +468,6 @@
                 <version>${aliyun-sdk-oss.version}</version>
             </dependency>
 
-
-            <!--七牛云上传图片服务-->
-            <!-- https://mvnrepository.com/artifact/com.qiniu/qiniu-java-sdk -->
-            <dependency>
-                <groupId>com.qiniu</groupId>
-                <artifactId>qiniu-java-sdk</artifactId>
-                <version>${qiniu.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>com.github.wechatpay-apiv3</groupId>
                 <artifactId>wechatpay-apache-httpclient</artifactId>
@@ -561,16 +532,6 @@
     </modules>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <!-- 引用外部文件，打包上传服务器是将此段注释 -->
-            <resource>
-                <directory>../config/run</directory>
-            </resource>
-        </resources>
-
         <plugins>
             <!-- 配置Spring Boot Maven插件 -->
             <plugin>

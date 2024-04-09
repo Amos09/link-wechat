@@ -19,7 +19,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class LinkWechatGatewayApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder(LinkWechatGatewayApplication.class)
-                .properties("spring.config.name:bootstrap", "config/run/bootstrap.yml")
                 .properties("spring.application.name="+ WeServerNameConstants.linkweGateway)
                 .build().run(args);
         System.out.println("(♥◠‿◠)ﾉﾞ  LinkWe-gateway启动成功   ლ(´ڡ`ლ)ﾞ ");

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-   <!-- 日志输出格式 -->
-	<property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | %thread | %logger{36}:%L | %M | %msg%n" />
+    <!-- 日志输出格式 -->
+    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | %thread | %logger{36}:%L | %M | %msg%n" />
 
     <!--  邮件 -->
     <!-- SMTP server的地址，必需指定。如网易的SMTP服务器地址是： smtp.163.com -->
@@ -20,12 +20,12 @@
     <!-- 指定发件人名称。如果设置成“&lt;ADMIN&gt; ”，则邮件发件人将会是“<ADMIN> ” -->
     <property name="email_from" value="1" />
     <!-- 指定emial的标题，它需要满足PatternLayout中的格式要求。如果设置成“Log: %logger - %msg ”，就案例来讲，则发送邮件时，标题为“【Error】: com.foo.Bar - Hello World ”。 默认值："%logger{20} - %m". -->
-    <property name="email_subject" value="【linkwechat-gateway】【Error】: %logger" />
+    <property name="email_subject" value="【linkwechat-wx-api】【Error】: %logger" />
 
-    <property name="app_name" value="linkwe-gateway"/>
+    <property name="app_name" value="linkwe-wx-api"/>
     <!-- 日志根目录-->
     <springProperty scope="context" name="log.path" source="logging.path"
-                    defaultValue="./logs/linkwe-gateway"/>
+                    defaultValue="./logs/linkwe-wx-api"/>
 
     <!-- 控制台输出 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
