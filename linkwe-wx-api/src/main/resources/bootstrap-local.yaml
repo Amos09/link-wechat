@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: Zz2825311647
+        namespace: ewscrm
+        group: DEV_GROUP
+        server-addr: 101.200.195.31:8848
+        watch:
+          enabled: false
+        metadata:
+          version: 1.0.0 # 服务实例的版本号，可用于灰度发布
+      # 配置中心
+      config:
+        username: nacos
+        password: Zz2825311647
+        namespace: ewscrm
+        server-addr: 101.200.195.31:8848
+        group: DEV_GROUP
+        file-extension: yml
+        config-retry-time: 300000
+        timeout: 60000
+        enabled: true
+        refresh-enabled: true
+        # 共享配置, 可以把公共配置放在同个命名空间下，然后创建一个 common.yml 文件 ，里面可以放共用的配置
+        shared-configs[0]:
+          dataId: linkwe-common.yml
+          refresh: true

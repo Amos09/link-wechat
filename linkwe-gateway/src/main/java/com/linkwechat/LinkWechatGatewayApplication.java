@@ -2,11 +2,10 @@ package com.linkwechat;
 
 
 import com.linkwechat.common.config.fegin.FeginConfig;
-import com.linkwechat.common.constant.WeServerNameConstants;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
@@ -18,9 +17,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients(basePackages="com.linkwechat.**",defaultConfiguration = FeginConfig.class)
 public class LinkWechatGatewayApplication {
     public static void main(String[] args) {
-        new SpringApplicationBuilder(LinkWechatGatewayApplication.class)
-                .properties("spring.application.name="+ WeServerNameConstants.linkweGateway)
-                .build().run(args);
+        SpringApplication.run(LinkWechatGatewayApplication.class, args);
         System.out.println("(♥◠‿◠)ﾉﾞ  LinkWe-gateway启动成功   ლ(´ڡ`ლ)ﾞ ");
     }
 }
