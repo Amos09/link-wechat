@@ -12,15 +12,16 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
         <spring-cloud-gateway.version>3.0.7</spring-cloud-gateway.version>
-        <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
         <springboot.version>2.6.6</springboot.version>
         <linkwe.version>2023-release</linkwe.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <druid.version>1.2.8</druid.version>
+        <druid.version>1.2.19</druid.version>
         <bitwalker.version>1.19</bitwalker.version>
         <swagger.version>2.9.2</swagger.version>
         <kaptcha.version>2.3.2</kaptcha.version>
@@ -34,11 +35,15 @@
         <velocity.version>1.7</velocity.version>
         <jwt.version>0.9.0</jwt.version>
         <forest.version>1.5.24</forest.version>
-        <lombok.version>1.18.16</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
         <reflectasm.version>1.11.9</reflectasm.version>
-        <hutool.version>5.8.16</hutool.version>
+        <hutool.version>5.8.22</hutool.version>
         <zxing.version>3.3.3</zxing.version>
-        <mybatis-plus.version>3.4.0</mybatis-plus.version>
+        <mybatis-plus.version>3.5.3.2</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.5.3.2</mybatis-plus-generator.version>
+        <dynamic-datasource.version>3.6.1</dynamic-datasource.version>
+        <mybatis-plus-join-boot-starter.version>1.4.6</mybatis-plus-join-boot-starter.version>
         <vertx.version>4.0.0</vertx.version>
         <netty-version>4.1.69.Final</netty-version>
         <jaxb.version>2.3.1</jaxb.version>
@@ -142,6 +147,27 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId> <!-- 代码生成器，使用它解析表结构 -->
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId> <!-- 多数据源 -->
+                <version>${dynamic-datasource.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.yulichang</groupId>
+                <artifactId>mybatis-plus-join-boot-starter</artifactId> <!-- MyBatis 联表查询 -->
+                <version>${mybatis-plus-join-boot-starter.version}</version>
             </dependency>
 
             <!-- 解析客户端操作系统、浏览器等 -->
@@ -294,7 +320,21 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId> <!-- use mapstruct-jdk8 for Java 8 or higher -->
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm -->
             <dependency>
                 <groupId>com.esotericsoftware</groupId>
@@ -314,13 +354,6 @@
                 <artifactId>core</artifactId>
                 <version>${zxing.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
-            </dependency>
-
 
             <dependency>
                 <groupId>io.vertx</groupId>
@@ -352,8 +385,6 @@
                 <artifactId>jsqlparser</artifactId>
                 <version>${jsqlparser.version}</version>
             </dependency>
-
-
 
             <dependency>
                 <groupId>com.google.protobuf</groupId>
@@ -532,55 +563,90 @@
     </modules>
 
     <build>
-        <plugins>
-            <!-- 配置Spring Boot Maven插件 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${springboot.maven.version}</version>
-            </plugin>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <annotationProcessorPaths>
+                            <!-- Lombok 在编译时会通过这个插件生成代码 -->
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                            <!-- MapStruct 在编译时会通过这个插件生成代码 -->
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${mapstruct.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
 
-            <!-- 配置jib-maven-plugin插件 -->
-            <!--  【Docker本地打镜像tar包命令】:mvn clean package -Ptest jib:buildTar -f pom.xml-->
-            <!--  【Docker把镜像push到本地docker命令】clean package -Ptest jib:dockerBuild -f pom.xml-->
-            <!--  【Docker把镜像push到远程镜像仓库命令】clean package -Ptest jib:build -Djib.httpTimeout=200000 -DsendCredentialsOverHttp=true -f pom.xml-->
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>${jib.maven.plugin.version}</version>
-                <configuration>
-                    <from>
-                        <image>openjdk:11-jdk</image>
-                    </from>
-                    <to>
-                        <image>${docker.harbor.addr}/${docker.harbor.project}/${project.artifactId}:${docker.harbor.tag.version}</image>
-                        <auth>
-                            <username>${docker.harbor.username}</username>
-                            <password>${docker.harbor.password}</password>
-                        </auth>
-                    </to>
-                </configuration>
-            </plugin>
-        </plugins>
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <configuration>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                    <configuration>
+                        <testFailureIgnore>true</testFailureIgnore>
+                    </configuration>
+                </plugin>
+                <!-- 统一 revision 版本 -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>${flatten-maven-plugin.version}</version>
+                    <configuration>
+                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                        <updatePomFile>true</updatePomFile>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                            <id>flatten</id>
+                            <phase>process-resources</phase>
+                        </execution>
+                        <execution>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                            <id>flatten.clean</id>
+                            <phase>clean</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
-
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <docker.harbor.addr>harbor.iyuhu.com</docker.harbor.addr>
-                <docker.harbor.project>supplier-ewscrm/linwechat-api</docker.harbor.project>
-                <docker.harbor.username>xu.xuejun</docker.harbor.username>
-                <docker.harbor.password>TiUL0EFq</docker.harbor.password>
-                <docker.harbor.tag.version>dev3</docker.harbor.tag.version>
-            </properties>
-        </profile>
-    </profiles>
-
-
-
-
 
     <!--项目本身的jar从指定镜像下载-->
     <repositories>

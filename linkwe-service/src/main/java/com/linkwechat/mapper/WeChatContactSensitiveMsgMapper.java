@@ -6,7 +6,6 @@ import com.linkwechat.domain.WeChatContactSensitiveMsg;
 import com.linkwechat.domain.msgaudit.query.WeSensitiveHitQuery;
 import com.linkwechat.domain.msgaudit.vo.WeChatContactSensitiveMsgVo;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import java.util.List;
  * @author danmo
  * @since 2022-06-10 10:38:47
  */
-@Repository()
 @Mapper
 public interface WeChatContactSensitiveMsgMapper extends BaseMapper<WeChatContactSensitiveMsg> {
 

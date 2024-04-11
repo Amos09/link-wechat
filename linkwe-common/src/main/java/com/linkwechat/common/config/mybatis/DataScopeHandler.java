@@ -3,7 +3,6 @@ package com.linkwechat.common.config.mybatis;
 import com.linkwechat.common.annotation.DataScope;
 import com.linkwechat.common.core.domain.entity.SysUser;
 import net.sf.jsqlparser.JSQLParserException;
-import net.sf.jsqlparser.statement.select.PlainSelect;
 
 /**
  * @author danmo

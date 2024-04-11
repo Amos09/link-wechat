@@ -1,13 +1,11 @@
 package com.linkwechat.mapper;
 
 
-import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.linkwechat.domain.msgaudit.query.WeChatContactMsgQuery;
 import com.linkwechat.domain.msgaudit.vo.WeChatContactMsgVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -19,8 +17,6 @@ import com.linkwechat.domain.WeChatContactMsg;
  * @author danmo
  * @since 2022-05-06 11:54:51
  */
-
-@Repository()
 @Mapper
 public interface WeChatContactMsgMapper extends BaseMapper<WeChatContactMsg> {
 
